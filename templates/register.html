@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Register - InterviewAI{% endblock %}
+{% block body %}
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-brand"><span>🤖</span> InterviewAI</div>
+    <h2>Create your account</h2>
+    <p class="auth-sub">Start practicing interviews with AI feedback.</p>
+    <form id="registerForm" class="auth-form">
+      <label>Full Name<input type="text" id="regName" required placeholder="Supriya" /></label>
+      <label>Email<input type="email" id="regEmail" required placeholder="you@example.com" /></label>
+      <label>Password<input type="password" id="regPassword" required placeholder="At least 6 characters" /></label>
+      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+    </form>
+    <div id="registerMessage" class="form-message"></div>
+    <p class="auth-switch">Already have an account? <a href="{{ url_for('login_page') }}">Log in</a></p>
+  </div>
+</div>
+<script>
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('registerMessage');
+  msg.textContent = 'Creating account...';
+  msg.className = 'form-message';
+  try {
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name: document.getElementById('regName').value,
+        email: document.getElementById('regEmail').value,
+        password: document.getElementById('regPassword').value
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Registration failed');
+    msg.textContent = 'Account created! Redirecting...';
+    msg.classList.add('success');
+    window.location.href = '/dashboard';
+  } catch (err) {
+    msg.textContent = err.message;
+    msg.classList.add('error');
+  }
+});
+</script>
+{% endblock %}

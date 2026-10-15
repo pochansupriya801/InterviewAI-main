@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - InterviewAI{% endblock %}
+{% block body %}
+<div class="app-shell">
+  {% include "sidebar.html" %}
+  <main class="main-content">
+    <header class="topbar">
+      <div class="greeting">
+        <h2>Hello, {{ current_user.name if current_user else 'Student' }}! 👋</h2>
+        <p>Sharpen your skills, build your confidence, and ace your dream interview!</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" title="Notifications">🔔</button>
+        <div class="profile-chip">
+          <span class="avatar">{{ (current_user.name[:1] if current_user else 'S') }}</span>
+          <span>{{ current_user.name if current_user else 'Student' }}</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero-banner">
+      <div class="hero-text">
+        <h1>AI Powered Mock Interviews</h1>
+        <p>Get real-time feedback, improve your skills, and land your dream job!</p>
+        <div class="hero-badges">
+          <span>Role-Based Questions</span>
+          <span>Instant Feedback</span>
+          <span>Performance Analytics</span>
+          <span>Personalized Study Plan</span>
+        </div>
+        <a class="btn btn-primary" href="/interview">Start Interview</a>
+      </div>
+      <div class="hero-illustration">
+        <div class="robot-card large">
+          <div class="robot-face">🤖</div>
+          <div class="robot-glow"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h3>Select a Job Role</h3>
+        <p>Choose a role to customize your mock interview.</p>
+      </div>
+      <div class="role-grid" id="roleGrid">
+        <button class="role-card" data-role="Python Developer"><span>🐍</span><div>Python Developer</div></button>
+        <button class="role-card" data-role="Java Developer"><span>☕</span><div>Java Developer</div></button>
+        <button class="role-card" data-role="Web Developer"><span>🌐</span><div>Web Developer</div></button>
+        <button class="role-card" data-role="Data Analyst"><span>📊</span><div>Data Analyst</div></button>
+        <button class="role-card" data-role="Frontend Developer"><span>🎨</span><div>Frontend Developer</div></button>
+        <button class="role-card" data-role="Backend Developer"><span>🛠️</span><div>Backend Developer</div></button>
+      </div>
+    </section>
+
+    <section class="section dashboard-grid">
+      <div class="card perf-card">
+        <h3>Overall Performance</h3>
+        <div class="perf-chart-wrap">
+          <canvas id="overallChart" width="180" height="180"></canvas>
+          <div class="perf-center">
+            <div class="perf-score" id="overallScore">0%</div>
+            <div class="perf-label">Overall</div>
+          </div>
+        </div>
+        <div class="score-list" id="scoreList"></div>
+      </div>
+
+      <div class="card">
+        <h3>Strengths</h3>
+        <ul class="bullet-list green" id="strengthsList"><li>Complete an interview to see strengths.</li></ul>
+      </div>
+
+      <div class="card">
+        <h3>Areas to Improve</h3>
+        <ul class="bullet-list red" id="improvementsList"><li>Complete an interview to see areas to improve.</li></ul>
+      </div>
+
+      <div class="card">
+        <h3>Recommended Topics</h3>
+        <div class="topic-chips" id="topicsList"><span class="chip">Complete an interview first</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div class="section-head inline">
+          <h3>Interview History</h3>
+          <a class="link" href="/history">View all</a>
+        </div>
+        <div id="recentHistory" class="table-wrap">
+          <p class="muted">Loading...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,18 @@
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <span class="brand-icon">🤖</span>
+    <span class="brand-text">InterviewAI</span>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="/dashboard" class="nav-item {{ 'active' if request.path=='/dashboard' else '' }}"><span>🏠</span> Home</a>
+    <a href="/interview" class="nav-item {{ 'active' if request.path.startswith('/interview') else '' }}"><span>🎤</span> Start Interview</a>
+    <a href="/history" class="nav-item {{ 'active' if request.path.startswith('/history') else '' }}"><span>📜</span> My History</a>
+    <a href="/resources" class="nav-item {{ 'active' if request.path.startswith('/resources') else '' }}"><span>📚</span> Study Resources</a>
+    <a href="/profile" class="nav-item {{ 'active' if request.path.startswith('/profile') else '' }}"><span>👤</span> Profile</a>
+    <a href="/settings" class="nav-item {{ 'active' if request.path.startswith('/settings') else '' }}"><span>⚙️</span> Settings</a>
+  </nav>
+  <div class="motivation-card">
+    <div class="mot-icon">🚀</div>
+    <p>"Practice Today, Perform Tomorrow!"</p>
+  </div>
+</aside>

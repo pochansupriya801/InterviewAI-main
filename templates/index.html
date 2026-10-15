@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}InterviewAI - AI-Powered Mock Interviews{% endblock %}
+{% block body %}
+<div class="landing">
+  <nav class="landing-nav">
+    <div class="brand"><span class="brand-icon">🤖</span> InterviewAI</div>
+    <div class="landing-nav-actions">
+      <a class="btn btn-ghost" href="{{ url_for('login_page') }}">Log in</a>
+      <a class="btn btn-primary" href="{{ url_for('register_page') }}">Get Started</a>
+    </div>
+  </nav>
+
+  <section class="landing-hero">
+    <div class="landing-hero-text">
+      <h1>AI Powered Mock Interviews</h1>
+      <p>Get real-time feedback, improve your skills, and land your dream job!</p>
+      <div class="landing-features">
+        <span>Role-Based Questions</span>
+        <span>Instant Feedback</span>
+        <span>Performance Analytics</span>
+        <span>Personalized Study Plan</span>
+      </div>
+      <div class="landing-cta">
+        <a class="btn btn-primary btn-lg" href="{{ url_for('register_page') }}">Start Practicing</a>
+        <a class="btn btn-ghost btn-lg" href="{{ url_for('login_page') }}">I have an account</a>
+      </div>
+    </div>
+    <div class="landing-illustration">
+      <div class="robot-card">
+        <div class="robot-face">🤖</div>
+        <div class="robot-bubble">"Tell me about yourself..."</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-grid">
+    <div class="landing-card">
+      <div class="landing-card-icon">🎯</div>
+      <h3>Role-Based Questions</h3>
+      <p>Questions tailored to Python, Java, Web, Data, Frontend and Backend roles.</p>
+    </div>
+    <div class="landing-card">
+      <div class="landing-card-icon">⚡</div>
+      <h3>Instant Feedback</h3>
+      <p>Get scores, strengths, improvements and sample answers in seconds.</p>
+    </div>
+    <div class="landing-card">
+      <div class="landing-card-icon">📊</div>
+      <h3>Performance Analytics</h3>
+      <p>Track progress with beautiful charts and detailed reports.</p>
+    </div>
+    <div class="landing-card">
+      <div class="landing-card-icon">📚</div>
+      <h3>Personalized Study Plan</h3>
+      <p>AI recommends topics and a plan based on your weak areas.</p>
+    </div>
+  </section>
+</div>
+{% endblock %}

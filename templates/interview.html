@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Interview - InterviewAI{% endblock %}
+{% block body %}
+<div class="app-shell">
+  {% include "sidebar.html" %}
+  <main class="main-content">
+    <header class="topbar">
+      <div class="greeting">
+        <h2>AI Mock Interview</h2>
+        <p>Select a role and difficulty, then start. Answer one question at a time.</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" onclick="location.href='/dashboard'">🏠</button>
+      </div>
+    </header>
+
+    <section class="card interview-setup" id="setupCard">
+      <div class="setup-grid">
+        <label>Job Role
+          <select id="roleSelect">
+            <option>Python Developer</option>
+            <option>Java Developer</option>
+            <option>Web Developer</option>
+            <option>Data Analyst</option>
+            <option>Frontend Developer</option>
+            <option>Backend Developer</option>
+          </select>
+        </label>
+        <label>Difficulty
+          <select id="difficultySelect">
+            <option>Easy</option>
+            <option selected>Medium</option>
+            <option>Hard</option>
+          </select>
+        </label>
+        <label>Number of Questions
+          <select id="countSelect">
+            <option>3</option>
+            <option>4</option>
+            <option selected>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" id="startInterviewBtn">Start Interview</button>
+      </div>
+      <div id="setupMessage" class="form-message"></div>
+    </section>
+
+    <section class="card chat-card hidden" id="chatCard">
+      <div class="chat-head">
+        <div>
+          <h3 id="roleBadge">Interview</h3>
+          <p id="progressText">Question 1 of 5</p>
+        </div>
+        <div class="chat-actions">
+          <button class="btn btn-ghost" id="prevBtn">Previous</button>
+          <button class="btn btn-primary" id="nextBtn">Next Question</button>
+          <button class="btn btn-danger" id="endBtn">End Interview</button>
+        </div>
+      </div>
+
+      <div class="chat-window" id="chatWindow"></div>
+
+      <div class="answer-area">
+        <textarea id="answerInput" placeholder="Type your answer here..."></textarea>
+        <div class="answer-actions">
+          <button class="btn btn-ghost" id="voiceBtn">🎙️ Voice Input</button>
+          <button class="btn btn-primary" id="submitBtn">Submit Answer</button>
+        </div>
+        <div id="voiceStatus" class="muted small"></div>
+      </div>
+
+      <div class="eval-panel hidden" id="evalPanel"></div>
+    </section>
+
+    <div id="loadingOverlay" class="loading-overlay hidden">
+      <div class="spinner"></div>
+      <p>AI is thinking...</p>
+    </div>
+  </main>
+</div>
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,6 @@
+Flask==3.0.3
+Flask-Cors==4.0.1
+python-dotenv==1.0.1
+openai==1.59.2Remove-Item -Recurse -Force .venv
+Werkzeug==3.0.3
+gunicorn==22.0.0; sys_platform != "win32"

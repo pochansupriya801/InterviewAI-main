@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Interview Report - InterviewAI{% endblock %}
+{% block body %}
+<div class="app-shell">
+  {% include "sidebar.html" %}
+  <main class="main-content">
+    <header class="topbar">
+      <div class="greeting"><h2>Interview Report</h2><p>Detailed feedback and personalized improvement plan.</p></div>
+      <div class="topbar-actions">
+        <a class="btn btn-primary" href="/dashboard">Back to Dashboard</a>
+      </div>
+    </header>
+    <div id="reportContent"><p class="muted">Loading report...</p></div>
+  </main>
+</div>
+<script>
+const INTERVIEW_ID = {{ interview_id }};
+</script>
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/report.js') }}"></script>
+{% endblock %}
+{% endblock %}
